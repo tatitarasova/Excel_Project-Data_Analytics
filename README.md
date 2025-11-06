@@ -13,7 +13,8 @@ In this project we have created a dashboard to help job seekers investigate sala
 ## Salary Analysis  
 
 In this project we've explored the most optimal jobs and skills in the data science market. 
-[Checkout my work here](Project_2-Dashboard)
+
+[Checkout my work here](Project_2-Analysis)
 
 ![2_Project_Analysis_Chart1](https://github.com/user-attachments/assets/e87234bb-1b78-400d-9752-ab78a365fff4)
 ![2_Project_Analysis_Chart3](https://github.com/user-attachments/assets/da7ad022-f55f-4147-8ffd-f9e3187be824)
