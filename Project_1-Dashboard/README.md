@@ -2,6 +2,7 @@
 
 ![Salary Dashboard Screenshot](Resources/Images/1_Salary_Dashboard.jpg)
 
+
 ## Introduction
 
 This data jobs salary dashboard was created to help job seekers investigate salaries for their desired jobs and ensure they are being adequately compensated. 
@@ -28,7 +29,7 @@ The dataset used for this project contains real-world data science job informati
 - **Locations**
 - **Skills**
 
-[Data_Sheet_screenshot](/Resources/Images/Data_sheet_screenshot.png)
+![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
 
 ## Dashboard Build
 
