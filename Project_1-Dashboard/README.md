@@ -57,15 +57,19 @@ The user can interact with the dashboard by changing job title, country or type 
 
 ![Data Validation Job Title list](Resources/Images/Data_validation_job_title.gif)
 
-In order to populate the lists, we used data validation feature of Excel. The lists themselves were created by picking unique values of `job_title_short`, `job_country` and `job_schedule_type`. For example, the following formula was used to populate the `Type` list:
+In order to populate the lists, we used Excel’s data validation feature. The lists themselves were created by extracting unique values of `job_title_short`, `job_country` and `job_schedule_type`. For example, the following formula was used to populate the `Type` list:
 
-`UNIQUE(jobs[job_schedule_type])`
+`=UNIQUE(jobs[job_schedule_type])`
 
-The `SORT` function was applied to the `Job Title` list to sort values in descending order of the median salary. Countries were sorted in descending order (alphabetically). And the list of job schedule types was normalised. Original data contains entries like `Full-time and Part-time` or `Part-time, Temp work, and Internship`:
+The `SORT` function was applied to the `Job Title` list to arrange the values in descending order of median salary. The `Country` list was sorted in ascending (alphabetical) order. The list of job schedule types was normalised, as the original data contained entries such as:
 
 ![The list of job schedule types before normalisation](Resources/Images/Full_list_of_job_types.png)
 
-The following funciton was applied to the list to normalise it: `FILTER(J2#, NOT(ISNUMBER(SEARCH("and", J2#)))*(J2#<>0))`. Note, `J2#` spilled array contains the full list of job schedule types. After the function was aplied, the list of job schedule types looks as follows:
+The following formula was applied to the list to normalise it:
+
+`=FILTER(J2#, NOT(ISNUMBER(SEARCH("and", J2#)))*(J2#<>0))`. 
+
+Note that the spilled array `J2#` contains the full list of job schedule types. After the function was applied, the list of job schedule types looks as follows:
 
 ![The list of job schedule types after normalisation](Resources/Images/Normalised_list_of_job_types.png)
 
