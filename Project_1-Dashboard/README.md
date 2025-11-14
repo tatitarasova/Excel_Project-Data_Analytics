@@ -21,8 +21,8 @@ The following Excel skills were utilised for creating the dashboard:
 
 - **Charts**
 - **Data Validation**
+- **Median Salary Calculation**
 - **KPI cards**
-- **Formulas and Functions**
 
 ### Charts
 
@@ -54,27 +54,53 @@ The following Excel skills were utilised for creating the dashboard:
 
 ### Data Validation
 
-The user can interact with the dashboard by changing job title, country or type and explore their corresponding meadin salaries. This input is controlled through filtered lists: `Job Title`, `Country`, and `Type`. 
+The user can interact with the dashboard by changing job title, country, or job schedule type to explore their corresponding meadian salaries. I used Excel's **Data validation** feature to control user input through predefined filtered lists : `Job Title`, `Country`, and `Type`. Below is a filtered list created for schedule types (similar steps were implemented for job titles and coutries):
 
-![Data Validation Job Title list](Resources/Images/Data_validation_job_title.gif)
+![Data Validation Job Type list](Resources/Images/Data_validation_job_type.gif)
 
-In order to populate the lists, we used Excel’s data validation feature. The lists themselves were created by extracting unique values of `job_title_short`, `job_country` and `job_schedule_type`. For example, the following formula was used to populate the `Type` list:
+To populate this list, I extracted the unique values of `job_schedule_type` using the following formula:
 
 `=UNIQUE(jobs[job_schedule_type])`
 
-The `SORT` function was applied to the `Job Title` list to arrange the values in descending order of median salary. The `Country` list was sorted in ascending (alphabetical) order. The list of job schedule types was normalised, as the original data contained entries such as:
+This resulted in the following list:
 
 ![The list of job schedule types before normalisation](Resources/Images/Full_list_of_job_types.png)
 
-The following formula was applied to the list to normalise it:
+For a better user experience, it was decided to **normalise** this list. The following formula was applied:
 
-`=FILTER(J2#, NOT(ISNUMBER(SEARCH("and", J2#)))*(J2#<>0))`. 
+`=FILTER(J2#,(NOT(ISNUMBER(SEARCH("and",J2#))+ISNUMBER(SEARCH(",",J2#))))*(J2#<>0))`. 
 
-Note that the spilled array `J2#` contains the full list of job schedule types. After the function was applied, the list of job schedule types looks as follows:
+- **Normalisation Rule**: Entries like "Full-time and Part-time" and "Full-time, Part-time, and Internship" are mapped to "Full-time". This is implemented using `FILTER()` combined with `NOT()`, `ISNUMBER()` and `SEARCH()` functions to exclude entries containing "and" or ",". 
+- **Data Cleaning**: Some entries contain "0" as their job type. These are excluded using an additional check via array multiplication. 
+- **Normalised List**:
 
 ![The list of job schedule types after normalisation](Resources/Images/Normalised_list_of_job_types.png)
 
-### Formulas and Functions
+### Median Salary Calculation
+
+Median salaries were calculated to provide specific salary insights for the selected job titles, countries, and schedule types. For example, the formula below was used to calculate the median salary for each job title (similarly, median salaries were calculated for job titles and countries): 
+
+```=MEDIAN(
+  IF(
+    (jobs[job_title_short]=A2)*
+    (jobs[job_country]=country)*
+    (ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
+    (jobs[salary_year_avg]<>0),
+    jobs[salary_year_avg]
+  )
+)
+```
+- **Data**: The values were taken from `salary_year_avg` column. Note that not all records include this data, which is why an additional check for blank salaries was added (see the next step).
+- **Array Formula**: Calculates the median using MEDIAN() with a nested IF() statement to include only rows that match:
+   - the job title in column `A`,
+   - the country and schedule type selected by the user, and
+   - non-blank salary values.
+- **Job Type Partial Matching**: Note that the user selects a job schedule type from a short normalised list (see the [Data Validation](#data-validation) above). If we did strict comparison of a selected `type` against our data table, we'd lose many records. That's why we use the combination of `ISNUMBER()` and `SEARCH()` function to do partial matching.
+- **Background Table**:
+
+![Background table for job titles and median salaries](Resources/Images/Background_table_for_job_titles_and_salaries.png)
+
+### KPI Cards
 For the selected `Job Title`, `Country`, and `Type` we calculated median salary. 
 
 
