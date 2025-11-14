@@ -64,9 +64,7 @@ In order to populate the lists, we used Excel’s data validation feature. The l
 
 The `SORT` function was applied to the `Job Title` list to arrange the values in descending order of median salary. The `Country` list was sorted in ascending (alphabetical) order. The list of job schedule types was normalised, as the original data contained entries such as:
 
-<img src="Resources/Images/Full_list_of_job_types.png" width="300">
-
-<!-- ![The list of job schedule types before normalisation](Resources/Images/Full_list_of_job_types.png) -->
+![The list of job schedule types before normalisation](Resources/Images/Full_list_of_job_types.png)
 
 The following formula was applied to the list to normalise it:
 
