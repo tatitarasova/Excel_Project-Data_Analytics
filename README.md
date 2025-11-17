@@ -8,7 +8,7 @@ In this project we have created a dashboard to help job seekers investigate sala
 
 [Checkout my work here](Project_1-Dashboard)  
 
-![1_Salary_Dashboard_Final_Dashboard](https://github.com/user-attachments/assets/5d4d1c68-d348-4c45-a330-13b8ff62ae0f)
+![Salary Dashboard Screenshot](Project_1-Dashboard/Resources/Images/1_Salary_Dashboard.jpg)
 
 ## Salary Analysis  
 
