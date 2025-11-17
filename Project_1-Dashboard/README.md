@@ -101,9 +101,25 @@ Median salaries were calculated to provide specific salary insights for the sele
 ![Background table for job titles and median salaries](Resources/Images/Background_table_for_job_titles_and_salaries.png)
 
 ### KPI Cards
-For the selected `Job Title`, `Country`, and `Type` we calculated median salary. 
 
+Three KPIs Cards were implemented for the dahsboard: **Median Salary**, **Top Job Platform** and **Job Count**. Technically, the cards were implemented through textboxes. Each textbox was connected to a corresponding Excel cell holding the required calculated value.
 
+#### Median Salary
 
+`=XLOOKUP(title, D2:D11, E2:E11, "No results")`
+
+- **Formula Purpose**: The formula calculates median salary for the selected job title. The job title can be selected by a user through a dedicated list of job titles (see [Data Validation](#data-validation) for detial).
+- **XLOOKUP function**: Searches for a job title selected by a user in the lookup array of job titles (`D2:D11`) and returns a corresponding value from the return array (`E2:E11`) or "No Results" if the value is not found.
+
+![Background table for the median salary KPI](Resources/Images/Background_table_for_median_salary_KPI.jpg)
+
+- **Insights**: The Median Salary KPI highlights a median salary for the selected job title.
+
+#### Top Job Platform
+
+#### Job Count
 
 ## Conclusion
+I created this dashboard as part of the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). Its purpose is to showcase insights into salary trends across various data-related job titles, job schedule types, and countries. 
+The data powering the dashboard was provided by the course organisers. Thanks to their courtesy, I was able to use the most recent data for this dashboard, covering the period from 2024 through June 2025.
+With the dashboard, users can compare salary offers for different job titles, vusualise salaries geographically on a map, and explore how different job schedule types influence salaries.
