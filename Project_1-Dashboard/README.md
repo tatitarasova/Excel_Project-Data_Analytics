@@ -109,13 +109,30 @@ Three KPIs Cards were implemented for the dahsboard: **Median Salary**, **Top Jo
 `=XLOOKUP(title, D2:D11, E2:E11, "No results")`
 
 - **Formula Purpose**: The formula calculates median salary for the selected job title. The job title can be selected by a user through a dedicated list of job titles (see [Data Validation](#data-validation) for detial).
-- **XLOOKUP function**: Searches for a job title selected by a user in the lookup array of job titles (`D2:D11`) and returns a corresponding value from the return array (`E2:E11`) or "No Results" if the value is not found.
+- **XLOOKUP Function**: Searches for a job title selected by a user in the lookup array of job titles (`D2:D11`) and returns a corresponding value from the return array (`E2:E11`) or "No Results" if the value is not found.
 
 ![Background table for the median salary KPI](Resources/Images/Background_table_for_median_salary_KPI.jpg)
 
 - **Insights**: The Median Salary KPI highlights a median salary for the selected job title.
 
 #### Top Job Platform
+
+To calculate the top job platform for the KPI card, we performed three steps:
+
+`=COUNTIFS(jobs[job_via], A2, jobs[job_title_short], title, jobs[job_country], country, jobs[job_schedule_type], type)`
+
+- **Formula Purpose**: The formula counts job offers from each job platform (column `[job_via]`of the `jobs` table) and for the selected job title, country and schedule type.
+
+`=SORT(A:B831, 2, -1)`
+
+- **Formula Purpose**: The formula sorts the array of platfroms and job counts in descending order by the job count. 
+- **Background Table**: 
+
+![Background table for the top job platform](Resources/Images/Background_table_for_top_job_platform.jpg)
+
+`=SUBSTITUTE(D2, "via", "")`
+
+- **Data cleaning**: Note that some records include "via" in the name of the platform. With this formula we exclude "via" from the platform's name.
 
 #### Job Count
 
