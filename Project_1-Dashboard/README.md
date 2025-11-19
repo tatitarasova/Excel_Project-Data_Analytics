@@ -2,27 +2,30 @@
 
 ![Salary Dashboard Screenshot](Resources/Images/1_Salary_Dashboard.jpg)
 
+The dashboard helps job seekers explore salaries for their desired positions and assess whether they are being adequately compensated. 
 
 ## Introduction
 
-I built this dashboard as part of the first project of the course [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). The dashboard helps job seekers explore salaries for their desired positions and assess whether they are being adequately compensated. 
+I built this dashboard as part of the first project of the course [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). The course provides a foundation in analysing data using Excel. 
 
-The dataset used for this project contains real-world data provided by the course creators. It covers the period from 2024 through June 2025 and includes over 44,000 data science job postings collected from various platforms. Each record provides information on job titles, salaries, locations, and essential skills.
+### Excel Skills Used
+
+To create the Salary Dashboard project, I used the following Excel skills:
+
+- **Charts**
+- **Formulas and Functions**
+- **Data Validation**
+
+### Data Jobs Dataset
+
+The dataset used for this project contains real-world data provided by the course creators. It covers the period from 2024 through June 2025 and includes over 44,000 data science job postings collected from various job posting platforms. Each record provides information on job titles, salaries, locations, essential skills, etc.
 
 ![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
-
 
 ### Dashboard File
 My final dashboard is in [1_Salary_Dashboard.xlsx](Resources/Datasets/1_Salary_Dashboard.xlsx).
 
 ## Dashboard Build
-
-The following Excel skills were utilised for creating the dashboard:
-
-- **Charts**
-- **Data Validation**
-- **Median Salary Calculation**
-- **KPI cards**
 
 ### Charts
 
@@ -104,16 +107,15 @@ Median salaries were calculated to provide specific salary insights for the sele
 
 Three KPIs Cards were implemented for the dahsboard: **Median Salary**, **Top Job Platform** and **Job Count**. Technically, the cards were implemented through textboxes. Each textbox was connected to a corresponding Excel cell holding the required calculated value.
 
-#### Median Salary
+#### Median Salary and Job Count
+
+To calculate these KPIs, `XLOOKUP()` function was employed. In both cases, when a user selects a job title, this title is then searched for in corresponding arrays of job titles-median salaries and job type-job count. For example, below is the formula to output median salary for the selected job title:  
 
 `=XLOOKUP(title, D2:D11, E2:E11, "No results")`
 
-- **Formula Purpose**: The formula calculates median salary for the selected job title. The job title can be selected by a user through a dedicated list of job titles (see [Data Validation](#data-validation) for detial).
 - **XLOOKUP Function**: Searches for a job title selected by a user in the lookup array of job titles (`D2:D11`) and returns a corresponding value from the return array (`E2:E11`) or "No Results" if the value is not found.
 
-![Background table for the median salary KPI](Resources/Images/Background_table_for_median_salary_KPI.jpg)
-
-- **Insights**: The Median Salary KPI highlights a median salary for the selected job title.
+- **Insights**: The Median Salary KPI card highlights an important metric for the selected job title: median salary.
 
 #### Top Job Platform
 
@@ -134,9 +136,8 @@ To calculate the top job platform for the KPI card, we performed three steps:
 
 - **Data cleaning**: Note that some records include "via" in the name of the platform. With this formula we exclude "via" from the platform's name.
 
-#### Job Count
-
 ## Conclusion
-I created this dashboard as part of the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). Its purpose is to showcase insights into salary trends across various data-related job titles, job schedule types, and countries. 
+I created this dashboard as part of the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). In this project, I utilised Excel charts, formulas and funcitons and Excel data validation.
+The purpose of the Salary Dashboard is to showcase insights into salary trends across various data-related job titles, job schedule types, and countries. 
 The data powering the dashboard was provided by the course organisers. Thanks to their courtesy, I was able to use the most recent data for this dashboard, covering the period from 2024 through June 2025.
 With the dashboard, users can compare salary offers for different job titles, vusualise salaries geographically on a map, and explore how different job schedule types influence salaries.
