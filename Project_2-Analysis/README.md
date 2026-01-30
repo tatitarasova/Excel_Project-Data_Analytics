@@ -3,9 +3,11 @@
 
 ## Introduction
 
-As part of the second project in the course [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/), I performed an in-depth analysis of the skills required in the data science job market and how they correlate with the offered salaries.
+As a former job seeker, I’ve always been surprised by the lack of data exploring the most optimal jobs and skills in the data science market. I set out to understand what skills top employers request and how to land more pay.
 
-The analysis focused on the following questions:
+### Questions to Analyze
+
+To understand the data science job market, I asked the following:
 
 1. **Do more skills get you better pay?**
 2. **What’s the salary for data jobs in different regions?**
@@ -14,7 +16,7 @@ The analysis focused on the following questions:
 
 ### Excel Skills Used
 
-The following Excel features were used in the analysis:
+The following Excel skills were utilized for analysis:
 
 - **Pivot Tables**
 - **Pivot Charts**
@@ -24,7 +26,9 @@ The following Excel features were used in the analysis:
 
 ### Data Jobs Dataset
 
-The dataset used for this project contains real-world data science job information from 2023 through August 2025. It was provided as part of the Excel course and includes detailed information on:
+The dataset used for this project contains real-world data science job information from 2023. The dataset is available via my Excel course, which provides a foundation for analyzing data using Excel. 
+
+It includes detailed information on:
 
 - **👨‍💼 Job titles**
 - **💰 Salaries**
