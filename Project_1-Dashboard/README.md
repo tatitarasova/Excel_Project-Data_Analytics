@@ -23,7 +23,7 @@ The dataset for this project contains real-world data provided by the course cre
 ![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
 
 ### Dashboard File
-My final dashboard is available here: [1_Salary_Dashboard.xlsx](Resources/Datasets/1_Salary_Dashboard.xlsx).
+My final dashboard is available here: [1_Salary_Dashboard.xlsx](https://1drv.ms/x/c/92d437f0706c3869/IQAKAyCKrdUWQZ1kUfIABTOxATqV0FRqFUx3RgZEUQ5ast0?e=JD36IK).
 
 ## Dashboard Build
 
