@@ -16,11 +16,11 @@ The analysis focused on the following questions:
 
 The following Excel features were used in the analysis:
 
-- **📊 Pivot Tables**
-- **📈 Pivot Charts**
-- **🧮 DAX (Data Analysis Expressions)**
-- **🔍 Power Query**
-- **💪 Power Pivot**
+- **Pivot Tables**
+- **Pivot Charts**
+- **DAX (Data Analysis Expressions)**
+- **Power Query**
+- **Power Pivot**
 
 ### Data Jobs Dataset
 
