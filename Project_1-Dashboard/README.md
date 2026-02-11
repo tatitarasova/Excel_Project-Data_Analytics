@@ -1,29 +1,20 @@
 # Excel Salary Dashboard
 
+This page describes the Salary Dashboard that was created as part of the first project in the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). The dashboard helps job seekers explore salaries for various data science positions and assess whether they are being adequately compensated. 
+
+Below is a screenshot of the dashboard. The final version is available here: [1_Salary_Dashboard.xlsx](Resources/Datasets/1_Salary_Dashboard.xlsx).
+
 ![Salary Dashboard Screenshot](Resources/Images/1_Salary_Dashboard.jpg)
 
-The dashboard helps job seekers explore salaries for different data science positions and assess whether they are being adequately compensated. 
+[Here](../README.md#the-data-jobs-dataset) you can find information about the data used for the project.
 
-## Introduction
-
-I built this dashboard as part of the first project of the course [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). The course provides a solid foundation in analysing data using Excel. 
-
-### Excel Skills Used
+## Excel Skills Used
 
 To create the Salary Dashboard, I used the following Excel skills:
 
 - **Charts**
 - **Formulas and Functions**
 - **Data Validation**
-
-### Data Jobs Dataset
-
-The dataset for this project contains real-world data provided by the course creators. It covers the period from 2024 through June 2025 and includes over 44,000 data science job postings collected from various platforms. Each record contains information about job titles, salaries, locations, required skills, and more.
-
-![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
-
-### Dashboard File
-My final dashboard is available here: [1_Salary_Dashboard.xlsx](Resources/Datasets/1_Salary_Dashboard.xlsx).
 
 ## Dashboard Build
 
