@@ -1,6 +1,6 @@
 # My Excel Data Analytics Projects
 
-This repo contains two projects that I implemented as part of the course [Excel for Data Analytics](https://www.lukebarousse.com/products/excel-for-data-analytics/).  
+This repo contains two projects that I implemented as part of the course [Excel for Data Analytics](https://www.lukebarousse.com/products/excel-for-data-analytics/). The course provides a solid foundation in analysing data using Excel. 
 
 ## Salary Dashboard  
 
@@ -26,5 +26,3 @@ The dataset for both projects contains real-world data provided by the course cr
 Below is the snippet of the dataset.
 
 ![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
-
-
