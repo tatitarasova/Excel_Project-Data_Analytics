@@ -1,44 +1,34 @@
 
 # Project 2 Analysis
 
-## Introduction
+This page describes analysis of [the data science jobs dataset](../README.md#the-data-jobs-dataset) that was performed as part of the second project in the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). 
 
-As a former job seeker, I’ve always been surprised by the lack of data exploring the most optimal jobs and skills in the data science market. I set out to understand what skills top employers request and how to land more pay.
-
-### Questions to Analyze
-
-To understand the data science job market, I asked the following:
+I set out to understand what skills top employers request and how to land more pay. The following questions guided my analysis:
 
 1. **Do more skills get you better pay?**
 2. **What’s the salary for data jobs in different regions?**
 3. **What are the top skills of data professionals?**
 4. **What’s the pay for the top 10 skills?**
 
-### Excel Skills Used
+## Excel Skills Used
 
-The following Excel skills were utilized for analysis:
+I used the following Excel skills for the project:
 
+- **Power Query**
 - **Pivot Tables**
 - **Pivot Charts**
 - **DAX (Data Analysis Expressions)**
-- **Power Query**
 - **Power Pivot**
 
-### Data Jobs Dataset
+## Data preparation/ETL with Power Query
 
-The dataset used for this project contains real-world data provided by the course creators. It covers the period from 2023 through December 2025 and includes over 113,000 data science job postings collected from various platforms. Each record contains information about job titles, salaries, locations, required skills, and more.
+### Extract
 
-![Data_Sheet_screenshot](Resources/Images/Data_sheet_screenshot.png)
+I first used Power Query to extract the original data from the [job dataset](../README.md#the-data-jobs-dataset). The original data is provided in an Excel workbook. I created two queries:
+- First one with all the data jobs information.
+- The second listing the skills for each job ID.
 
-#### 🔍 Skill: Power Query (ETL)
-
-##### 📥 Extract
-
-- I first used Power Query to extract the original data (`data_salary_all.xlsx`) and create two queries:
-    - 🗃️ First one with all the data jobs information.
-    - 🔧 The second listing the skills for each job ID.
-
-##### 🔄 Transform
+### Transform
 
 - Then, I transformed each query by changing column types, removing unnecessary columns, cleaning text to eliminate specific words, and trimming excess whitespace.
     - 📊 data_jobs_all
@@ -49,7 +39,7 @@ The dataset used for this project contains real-world data provided by the cours
 
         ![2_Project_Analysis_Screenshot2.png](/0_Resources/Images/2_Project_Analysis_Screenshot2.png)
 
-##### 🔗 Load
+### Load
 
 - Finally, I loaded both transformed queries into the workbook, setting the foundation for my subsequent analysis.
     - 📊 data_jobs_all
@@ -61,9 +51,9 @@ The dataset used for this project contains real-world data provided by the cours
         ![2_Project_Analysis_Screenshot4.png](/0_Resources/Images/2_Project_Analysis_Screenshot4.png)
 
 
-### 📊 Analysis
+## Data Analysis
 
-#### 1️⃣ Do more skills get you better pay?
+### 1️⃣ Do more skills get you better pay?
 
 💡 Insights
 
@@ -76,7 +66,7 @@ The dataset used for this project contains real-world data provided by the cours
 
 - This trend emphasizes the value of acquiring multiple relevant skills, particularly for individuals aiming for higher-paying roles.
 
-#### 2️⃣ What’s the salary for data jobs in different regions?
+### 2️⃣ What’s the salary for data jobs in different regions?
 
 🧮 Skills: PivotTables & DAX
 
@@ -110,7 +100,7 @@ The dataset used for this project contains real-world data provided by the cours
 
 - These salary insights are important for planning and salary negotiations, helping professionals and companies align their offers with market standards while considering geographical variations.
 
-#### 3️⃣ What are the top skills of data professionals?
+### 3️⃣ What are the top skills of data professionals?
 
 🔧 Skill: Power Pivot
 
@@ -142,7 +132,7 @@ The dataset used for this project contains real-world data provided by the cours
 
 - Understanding prevalent skills in the industry not only helps professionals stay competitive but also guides training and educational programs to focus on the most impactful technologies.
 
-#### 4️⃣ What’s the pay of the top 10 skills?
+### 4️⃣ What’s the pay of the top 10 skills?
 
 📊 Skill: Advanced Charts (Pivot Chart)
 
@@ -164,7 +154,7 @@ The dataset used for this project contains real-world data provided by the cours
 
 - This chart highlights the importance of investing time in learning high-value skills like Python and SQL, which are evidently tied to higher paying roles, especially for those looking to maximize their salary in the tech industry.
 
-### Conclusion
+## Conclusion
 
 As a data enthusiast and former job seeker, I embarked on this Excel-based project to uncover valuable insights about the data science job market. Using a dataset I've curated from real-world job postings, I analyzed job titles, salaries, locations, and essential skills. By leveraging Excel features like Power Query, PivotTables, DAX, and charts, I discovered key correlations between multiple skills and higher salaries, particularly in Python, SQL, and cloud technologies. 
 
