@@ -5,9 +5,9 @@ This page describes analysis of [the data science jobs dataset](../README.md#the
 
 I set out to understand what skills top employers request and how to land more pay. The following questions guided my analysis:
 
-1. **Do more skills get you better pay?**
+1. **What are the top skills of data professionals?**
 2. **What’s the salary for data jobs in different regions?**
-3. **What are the top skills of data professionals?**
+3. **Do more skills get you better pay?**
 4. **What’s the pay for the top 10 skills?**
 
 ## Excel Skills Used
@@ -26,34 +26,60 @@ I used the following Excel skills for the project:
 
 I first used Power Query to extract the original data from the [job dataset](../README.md#the-data-jobs-dataset). The original data is provided in an Excel workbook. I created two queries:
 - First one with all the data jobs information.
-- The second listing the skills for each job ID.
+- The second listing only the skills for each job ID.
 
 ### Transform
 
-- Then, I transformed each query by changing column types, removing unnecessary columns, cleaning text to eliminate specific words, and trimming excess whitespace.
-    - 📊 data_jobs_all
+Then, I transformed each query by changing column types, removing unnecessary columns, adding index, cleaning text to eliminate specific words, and trimming excess whitespace. Below are two snippets illustrating all the transformation steps performed on the queries:
+- data_jobs_salary
 
-        ![2_Project_Analysis_Screenshot1.png](/0_Resources/Images/2_Project_Analysis_Screenshot1.png)
+    ![data_jobs_salary_power_query.jpg](./Resources/Images/data_jobs_salary_power_query.jpg)
 
-    - 🛠️ data_job_skills
+- data_job_skills
 
-        ![2_Project_Analysis_Screenshot2.png](/0_Resources/Images/2_Project_Analysis_Screenshot2.png)
+    ![data_jobs_skills_power_query.jpg](./Resources/Images/data_jobs_skills_power_query.jpg)
 
 ### Load
 
-- Finally, I loaded both transformed queries into the workbook, setting the foundation for my subsequent analysis.
-    - 📊 data_jobs_all
+Finally, I loaded both transformed queries into the workbook, setting the foundation for my subsequent analysis.
 
-        ![2_Project_Analysis_Screenshot3.png](/0_Resources/Images/2_Project_Analysis_Screenshot3.png)
+- data_jobs_salary
 
-    - 🛠️ data_job_skills
+    ![data_jobs_salary_power_query_data.jpg](./Resources/Images/data_jobs_salary_power_query_data.jpg)
 
-        ![2_Project_Analysis_Screenshot4.png](/0_Resources/Images/2_Project_Analysis_Screenshot4.png)
+- data_job_skills
+
+    ![data_jobs_salary_power_query_data.jpg](./Resources/Images/data_jobs_salary_power_query_data.jpg)
 
 
 ## Data Analysis
 
-### 1️⃣ Do more skills get you better pay?
+### 1️⃣ What are the top skills of data professionals?/ Data models with Power Pivot
+
+I integrated `data_jobs_salary` and `data_jobs_skills` tables into a single model using Power Pivot, and created a relationship between these two tables using the `job_id` column.
+
+![data_model.jpg](./Resources/Images/data_model.jpg)
+
+For the analysis, I loaded the data into a PivotChart. The data has been sorted in descending order by job skill count and only the top 10 skills were retained for the analysis:
+
+![question1_analysis.jpg](./Resources/Images/question1_analysis.jpg)
+
+#### Insights
+
+Understanding prevalent skills in the industry not only helps professionals stay competitive but also guides training and educational programs to focus on the most impactful technologies:
+- SQL and Python dominate as top skills in data-related jobs, reflecting their foundational role in data processing and analysis.
+- Emerging technologies such as AWS and Azure also show a significant presence, underlining the industry's shift towards cloud services and big data technologies.
+
+Thanks to our data model, we can examine the relationship between the `data_jobs_salary` and `data_jobs_skills` tables, and focus our analysis on a specific data science job title. This can be done using a **Job Title slicer** that filters the data by `job_title_short` from the `data_jobs_salary` table. For example, the screenshot below shows the top 10 skills for a **Data Analyst**:
+
+![question1_analysis2.jpg](./Resources/Images/question1_analysis2.jpg)
+
+#### Insights
+
+- It is notable that for data analysts, SQL and Python remain among the top three required skills; however, Excel becomes second most important skill replacing AWS that was in the top 3 skills of a collective 'Data Nerd' professional. 
+- Another eye-catching difference is that technical skills such as AWS, Azure, and Spark do not appear among the top 10 skills for Data Analysts. At the same time, knowledge of Power BI becomes more relevant for Data Analysts.
+
+### 3️⃣ Do more skills get you better pay?
 
 💡 Insights
 
@@ -99,38 +125,6 @@ I first used Power Query to extract the original data from the [job dataset](../
 **🤔 So What**
 
 - These salary insights are important for planning and salary negotiations, helping professionals and companies align their offers with market standards while considering geographical variations.
-
-### 3️⃣ What are the top skills of data professionals?
-
-🔧 Skill: Power Pivot
-
-💪 Power Pivot
-
-- 🔗 I created a data model by integrating the `data_jobs_all` and `data_jobs_skills` tables into one model.
-- 🧹 Since I had already cleaned the data using Power Query; Power Pivot created a relationship between these two tables.
-
-🔗 Data Model
-
-- I created a relationship between my two tables using the `job_id` column.
-
-    ![2_Project_Analysis_Screenshot5.png](/0_Resources/Images/2_Project_Analysis_Screenshot5.png)
-
-📃 Power Pivot Menu
-
-- The Power Pivot menu was used to refine my data model and makes it easy to create measures.
-
-    ![2_Project_Analysis_Screenshot6.png](/0_Resources/Images/2_Project_Analysis_Screenshot6.png)
-
-💡Insights
-
-- 💻 SQL and Python dominate as top skills in data-related jobs, reflecting their foundational role in data processing and analysis.
-- ☁️ Emerging technologies like AWS and Azure also show significant presence, underlining the industry's shift towards cloud services and big data technologies.
-
-    ![2_Project_Analysis_Chart3.png](/0_Resources/Images/2_Project_Analysis_Chart3.png)
-
-🤔So What
-
-- Understanding prevalent skills in the industry not only helps professionals stay competitive but also guides training and educational programs to focus on the most impactful technologies.
 
 ### 4️⃣ What’s the pay of the top 10 skills?
 
