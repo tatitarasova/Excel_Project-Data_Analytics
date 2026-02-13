@@ -6,8 +6,8 @@ This page describes analysis of [the data science jobs dataset](../README.md#the
 I set out to understand what skills top employers request and how to land more pay. The following questions guided my analysis:
 
 1. **What are the top skills of data professionals?**
-2. **What’s the salary for data jobs in different regions?**
-3. **Do more skills get you better pay?**
+2. **Do more skills get you better pay?**
+3. **What’s the salary for data jobs in different regions?**
 4. **What’s the pay for the top 10 skills?**
 
 ## Excel Skills Used
@@ -79,20 +79,31 @@ Thanks to our data model, we can examine the relationship between the `data_jobs
 - It is notable that for data analysts, SQL and Python remain among the top three required skills; however, Excel becomes second most important skill replacing AWS that was in the top 3 skills of a collective 'Data Nerd' professional. 
 - Another eye-catching difference is that technical skills such as AWS, Azure, and Spark do not appear among the top 10 skills for Data Analysts. At the same time, knowledge of Power BI becomes more relevant for Data Analysts.
 
-### 3️⃣ Do more skills get you better pay?
+###  2️⃣ Do more skills get you better pay?/ DAX for explicit measures
 
-💡 Insights
+To answer this question, we esentially need two measures: skills count and median salary for each job title. In Excel there are two ways to calculate such measures: implicit and explicit. I used DAX aggregation functions available through Power Pivot to add explicit measures to our data model. Below are the formulas that defined the two measures we needed for the analysis, `Skills Per Job` and `Median Salary`:
 
-- 📈 There is a positive correlation between the number of skills requested in job postings and the median salary, particularly in roles like Senior Data Engineer and Data Scientist.
-- 💼 Roles that require fewer skills, like Business Analyst, tend to offer lower salaries, suggesting that more specialized skill sets command higher market value.
+- `Job Count:=DISTINCTCOUNT(data_jobs_salary[job_id])` 
+Counts how many job postings there are in the `data_jobs_salary` table.
 
-    ![2_Project_Analysis_Chart1.png](/0_Resources/Images/2_Project_Analysis_Chart1.png)
+- `Skill Count:=COUNT(data_jobs_skills[job_skills])`
+Counts how many skills there are in the `data_jobs_skills` table.
 
-🤔 So What
+- `Skills Per Job:=DIVIDE([Skill Count], [Job Count])`
 
+- `Median Salary:=MEDIAN(data_jobs_salary[salary_year_avg])`
+
+Finally, I represented the two measures, `Skills Per Job` and `Median Salary`, in a scatter plot: 
+
+![question2_analysis.jpg](./Resources/Images/question2_analysis.jpg)
+
+#### Insights
+
+- There is a positive correlation between the number of skills requested in job postings and the median salary.
+- Roles that require fewer skills, like Data Analyst, Business Analyst or Senior Data Analyst, tend to offer lower salaries, suggesting that more specialized skill sets command higher market value.
 - This trend emphasizes the value of acquiring multiple relevant skills, particularly for individuals aiming for higher-paying roles.
 
-### 2️⃣ What’s the salary for data jobs in different regions?
+### 3️⃣ What’s the salary for data jobs in different regions?
 
 🧮 Skills: PivotTables & DAX
 
