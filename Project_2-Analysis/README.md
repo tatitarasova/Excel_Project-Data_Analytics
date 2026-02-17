@@ -103,38 +103,37 @@ Finally, I represented the two measures, `Skills Per Job` and `Median Salary`, i
 - Roles that require fewer skills, like Data Analyst, Business Analyst or Senior Data Analyst, tend to offer lower salaries, suggesting that more specialized skill sets command higher market value.
 - This trend emphasizes the value of acquiring multiple relevant skills, particularly for individuals aiming for higher-paying roles.
 
-### 3️⃣ What’s the salary for data jobs in different regions?
+### 3️⃣ What’s the salary for data jobs in different regions?/ PivotTables and DAX
 
-🧮 Skills: PivotTables & DAX
+The data to answer this question can be found in the `data_jobs_salary` table that we loaded into our data model previously. To analyse this data, I created a PivotTable, and moved the `job_title_short` to the rows area and `salary_year_avg` into the values area.
 
-📈Pivot Table
+We already had `Median Salary` - previously calculated explicit measure. This measure shows median salary for different job titles. I added a slicer on the `job_country` field to examine median salary for different countries. However, the slicer shows only one median salary for the selected country or countries. So, I added two more measures to the `data_jobs_salary` table, to have a more comparative analysis: `Median Salary US` and `Median Salary Non-US`.
 
-- 🔢 I created a PivotTable using the Data Model I created with Power Pivot.
-- 📊 I moved the `job_title_short` to the rows area and `salary_year_avg` into the values area.
-- 🧮 Then I added new measure to calculate the median salary for United States jobs.
+- `Median Salary US` calculates the median salary for United States jobs; it was defined with the following DAX Formula:
     ```
     =CALCULATE(
-        MEDIAN(data_jobs_all[salary_year_avg]),
-        data_jobs_all[job_country] = "United States")
+        [Median Salary],
+        data_jobs_salary[job_country] = "United States")
     ```
 
-🧮 DAX
-
-- To calculate the median year salary I used DAX.
-
+- `Median Salary Non-US` calculates the median salary for all other countries; it was defined with the following DAX Formula:
     ```
-    Median Salary := MEDIAN(data_jobs_all[salary_year_avg])
+    =CALCULATE(
+        [Median Salary],
+        data_jobs_salary[job_country] <> "United States")
     ```
 
-💡 Insights
+The screenshot below represents the PivotTable created for the current analysis. It lists all the job titles and three types of salaries calculated for each title: `Median Salary`, `Median Salary US` and `Median Salary Non-US`. The table is sorted by the values `Median Salary` from smallest to largest.
 
-- 💼 Job roles like Senior Data Engineer and Data Scientist command higher median salaries both in the US and internationally, showcasing the global demand for high-level data expertise.
-- 💰 The salary disparity between US and Non-US roles is particularly notable in high-tech jobs, which might be influenced by the concentration of tech industries in the US.
+The slicer connected to the table has `Spain` selected, and filters the `Median Salary` to the values relevant for Spain job postings only.
 
-    ![2_Project_Analysis_Chart2.png](/0_Resources/Images/2_Project_Analysis_Chart2.png)
+![question3_analysis.jpg](./Resources/Images/question3_analysis.jpg)
 
-**🤔 So What**
+#### Insights
 
+-  Job roles like Senior Data Engineer and Senior Data Scientist command higher median salaries in Spain. They are also job roles with the highest pay both in the US and internationally, showcasing the global demand for high-level data expertise.
+- The salary disparity between US, internationally and Spain is particularly notable in such technical professions as Software Engineer, Cloud Engineer and Machine Learning Engineer. In Spain these professionals are offered several thousands dollars less than in the US and other countries.
+- The only professional that is offered more in Spain than in the US and other countries is Business Analyst.
 - These salary insights are important for planning and salary negotiations, helping professionals and companies align their offers with market standards while considering geographical variations.
 
 ### 4️⃣ What’s the pay of the top 10 skills?
