@@ -1,4 +1,3 @@
-
 # Project 2 Analysis
 
 This page describes analysis of [the data science jobs dataset](../README.md#the-data-jobs-dataset) that was performed as part of the second project in the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/). 
@@ -8,7 +7,7 @@ I set out to understand what skills top employers request and how to land more p
 1. **What are the top skills of data professionals?**
 2. **Do more skills get you better pay?**
 3. **What’s the salary for data jobs in different regions?**
-4. **What’s the pay for the top 10 skills?**
+4. **What’s the pay and likelihood of the top 10 skills?**
 
 ## Excel Skills Used
 
@@ -76,10 +75,10 @@ Thanks to our data model, we can examine the relationship between the `data_jobs
 
 #### Insights
 
-- It is notable that for data analysts, SQL and Python remain among the top three required skills; however, Excel becomes second most important skill replacing AWS that was in the top 3 skills of a collective 'Data Nerd' professional. 
-- Another eye-catching difference is that technical skills such as AWS, Azure, and Spark do not appear among the top 10 skills for Data Analysts. At the same time, knowledge of Power BI becomes more relevant for Data Analysts.
+- It is notable that for data analysts, SQL and Python remain among the top three required skills; however, Excel becomes second most important skill replacing AWS that was in the top 3 skills of a collective *Data Nerd* professional. 
+- Another eye-catching difference is that technical skills such as AWS, Azure, and Spark do not appear among the top 10 skills for data analysts. At the same time, knowledge of Power BI becomes more relevant for data analysts.
 
-###  2️⃣ Do more skills get you better pay?/ DAX for explicit measures
+### 2️⃣ 2 Do more skills get you better pay?/ DAX for explicit measures
 
 To answer this question, we esentially need two measures: skills count and median salary for each job title. In Excel there are two ways to calculate such measures: implicit and explicit. I used DAX aggregation functions available through Power Pivot to add explicit measures to our data model. Below are the formulas that defined the two measures we needed for the analysis, `Skills Per Job` and `Median Salary`:
 
@@ -100,66 +99,68 @@ Finally, I represented the two measures, `Skills Per Job` and `Median Salary`, i
 #### Insights
 
 - There is a positive correlation between the number of skills requested in job postings and the median salary.
-- Roles that require fewer skills, like Data Analyst, Business Analyst or Senior Data Analyst, tend to offer lower salaries, suggesting that more specialized skill sets command higher market value.
+- Roles that require fewer skills, like **Data Analyst**, **Business Analyst** or **Senior Data Analyst**, tend to offer lower salaries, suggesting that more specialized skill sets command higher market value.
 - This trend emphasizes the value of acquiring multiple relevant skills, particularly for individuals aiming for higher-paying roles.
 
 ### 3️⃣ What’s the salary for data jobs in different regions?/ PivotTables and DAX
 
-The data to answer this question can be found in the `data_jobs_salary` table that we loaded into our data model previously. To analyse this data, I created a PivotTable, and moved the `job_title_short` to the rows area and `salary_year_avg` into the values area.
+The data needed to answer this question is stored in the `data_jobs_salary` table, which was previously loaded into the data model. To analyse this data, I created a PivotTable, and placed the `job_title_short` in the **Rows** area and `salary_year_avg` into the **Values** area.
 
-We already had `Median Salary` - previously calculated explicit measure. This measure shows median salary for different job titles. I added a slicer on the `job_country` field to examine median salary for different countries. However, the slicer shows only one median salary for the selected country or countries. So, I added two more measures to the `data_jobs_salary` table, to have a more comparative analysis: `Median Salary US` and `Median Salary Non-US`.
+A `Median Salary` explicit measure had already been created (see analyss [here](#2️⃣-2-do-more-skills-get-you-better-pay-dax-for-explicit-measures). This measure calculates the median salary for different job titles. I also added a slicer on the `job_country` field to examine median salary across countries. However, the slicer displays only a single median salary for the selected country or group of countries.
 
-- `Median Salary US` calculates the median salary for United States jobs; it was defined with the following DAX Formula:
+To enable a more comparitive analysis, I added two additional measures to the `data_jobs_salary` table: `Median Salary US` and `Median Salary Non-US`.
+
+- `Median Salary US` calculates the median salary for jobs in the United States; it is defined using the following DAX Formula:
     ```
     =CALCULATE(
         [Median Salary],
         data_jobs_salary[job_country] = "United States")
     ```
 
-- `Median Salary Non-US` calculates the median salary for all other countries; it was defined with the following DAX Formula:
+- `Median Salary Non-US` calculates the median salary for jobs in all other countries; it is defined using the following DAX Formula:
     ```
     =CALCULATE(
         [Median Salary],
         data_jobs_salary[job_country] <> "United States")
     ```
 
-The screenshot below represents the PivotTable created for the current analysis. It lists all the job titles and three types of salaries calculated for each title: `Median Salary`, `Median Salary US` and `Median Salary Non-US`. The table is sorted by the values `Median Salary` from smallest to largest.
+The screenshot below shows the PivotTable created for this analysis. It lists all job titles along with three salary measures calculated for each title: `Median Salary`, `Median Salary US` and `Median Salary Non-US`. The table is sorted by `Median Salary` values in ascending order.
 
-The slicer connected to the table has `Spain` selected, and filters the `Median Salary` to the values relevant for Spain job postings only.
+The slicer connected to the table has `Spain` selected, which filters the `Median Salary` measure to values relevant only to job postings in Spain.
 
 ![question3_analysis.jpg](./Resources/Images/question3_analysis.jpg)
 
 #### Insights
 
--  Job roles like Senior Data Engineer and Senior Data Scientist command higher median salaries in Spain. They are also job roles with the highest pay both in the US and internationally, showcasing the global demand for high-level data expertise.
-- The salary disparity between US, internationally and Spain is particularly notable in such technical professions as Software Engineer, Cloud Engineer and Machine Learning Engineer. In Spain these professionals are offered several thousands dollars less than in the US and other countries.
-- The only professional that is offered more in Spain than in the US and other countries is Business Analyst.
-- These salary insights are important for planning and salary negotiations, helping professionals and companies align their offers with market standards while considering geographical variations.
+-  Job roles such as **Senior Data Engineer** and **Senior Data Scientist** command higher median salaries in Spain. These roles also rank among the highest-paying positions in both the US and international markets, highlighting the global demand for advanced data expertise.
+- Salary disparities between the US, international markets, and Spain are particularly pronounced in technical roles such as **Software Engineer**, **Cloud Engineer**, and **Machine Learning Engineer**. In Spain, professionals in these positions are offered several thousand dollars less than their counterparts in the US and other countries.
+- The only role that offers higher median salary in Spain compared to both the US and other countries is **Business Analyst**.
+- These salary insights are valuable for career planning and salary negotiations, helping both professionals and organisations align compensation with market standards while accounting for geographical differences.
 
-### 4️⃣ What’s the pay of the top 10 skills?
+### 4️⃣ What’s the pay and likelihood of the top 10 skills?/ PivotCharts and DAX
 
-📊 Skill: Advanced Charts (Pivot Chart)
+To answer this question, we need two types of data: the skill count and the median salary for each skill. This data are organised into two tables: `data_jobs_salary` and `data_jobs_skills`. The two tables are related by `job_id` (see analysis in [this Section](#1️⃣-what-are-the-top-skills-of-data-professionals-data-models-with-power-pivot)).
 
-📈 PivotChart
+Median Salary was added as an explicit measure to `data_jobs_salary` and is described in [this analysis](#2️⃣-do-more-skills-get-you-better-pay-dax-for-explicit-measures).
 
-- I created a combo PivotChart to plot median salary and skill likelihood (%) from my PivotTable.
-    - 🪙 **Primary Axis:** Median Salary (as a Clustered Column)
-    - 👍 **Secondary Axis:** Skill Likelihood (as a Line with Markers)
-- To customize the chart, I added a title axis title, removed the lines (skill likelihood), and changed the markers to diamonds.
+Likelihood represents the probability of a skill appearing in a job. I define it as the ratio of the `Skill Count` to the `Job Count` - two explicit measures whose computation is described in [this analysis](#2️⃣-do-more-skills-get-you-better-pay-dax-for-explicit-measures)).
 
-💡Insights
+`Ratio = Skill Count / Job Count`
 
-- 💰 Higher median salaries are associated with skills like Python, Oracle, and SQL, suggesting their critical role in high-paying tech jobs.
-- 📉 Skills like PowerPoint and Word have the lowest median salaries and likelihood, indicating less specialization and demand in high-salary sectors.
+The corresponding DAX formula is:
 
-    ![2_Project_Analysis_Chart4.png](/0_Resources/Images/2_Project_Analysis_Chart4.png)
+`DIVIDE([Skill Count], [Job Count])`
 
-🤔So What
+For visual analysis, I created a combo PivotChart in which `Median Salary` is plotted on the **primary axis** as a clustered column, while `Skill Likelihood` is plotted on the **secondary axis** as a line with markers. Below is a screenshot of the chart:
 
-- This chart highlights the importance of investing time in learning high-value skills like Python and SQL, which are evidently tied to higher paying roles, especially for those looking to maximize their salary in the tech industry.
+![./Resources/Images/question4_analysis.png](./Resources/Images/question4_analysis.png)
+
+#### Insights
+
+- Higher median salaries are associated with skills such as Spark, AWS, and Azure, suggesting their critical role in high-paying tech jobs. This indicates that employers are willing to pay more for professionals who can design, operate, and optimize data systems at scale. 
+- When examining skill likelihood, it is notable that nearly 50% of job postings mention Python and/or SQL. At the same time, these skills are clearly linked to high-paying roles. This highlights the importance of investing time in learning them, especially for those looking to enter the job market and maximise their earning potential.
+- Finally, skills such as Power BI and SAS show both lower median salaries and lower likelihoods, indicating weaker demand in high-salary segments of the market.
 
 ## Conclusion
 
-As a data enthusiast and former job seeker, I embarked on this Excel-based project to uncover valuable insights about the data science job market. Using a dataset I've curated from real-world job postings, I analyzed job titles, salaries, locations, and essential skills. By leveraging Excel features like Power Query, PivotTables, DAX, and charts, I discovered key correlations between multiple skills and higher salaries, particularly in Python, SQL, and cloud technologies. 
-
-I hope this project serves as a practical guide for data professionals and provides an overview of the skills needed for higher-paying roles.
+As a current job seeker, I embarked on this Excel-based project to uncover valuable insights into the data science job market. Using a dataset that was provided by the creators of the [Excel for Data Analytics course](https://www.lukebarousse.com/products/excel-for-data-analytics/), I analysed job titles, salaries, locations, and essential skills. By leveraging Excel features such as PivotTables, PivotCharts, Power Query, Power Pivot, and DAX, I identified key correlations between in-demand skills and higher salaries &mdash; particularly in Python, SQL, and cloud technologies. 
